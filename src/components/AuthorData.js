@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Book from "../models/Book";
 import Author from "../models/Author";
-import { fetchAuthorById } from "../redux/AuthorSlice";
+import { fetchAuthorByName } from "../redux/AuthorSlice";
 import { getAuthorByIdService, getAuthorByNameService, getAllAuthorsService, addAuthorService } from "../services/AuthorService";
 import {getAllBooksService} from "../services/BookService";
 
@@ -10,7 +10,7 @@ import {getAllBooksService} from "../services/BookService";
 
 const AuthorData = () => {
 
-    const [id, setId] = useState('');
+    const [name ,setName] = useState('');
     const [author, setAuthor] = useState(new Author());
     const [authorToBeAdded, setAuthorToBeAdded] = useState(new Author());
     const [book, setBook] = useState(new Book());
@@ -32,7 +32,7 @@ const AuthorData = () => {
     const handleChange = (evt) => {
         console.log(evt.target.name);
         console.log(evt.target.value);
-        setId(evt.target.value);
+        setName(evt.target.value);
     }
 
     const handleAddAuthor = (a) => {
@@ -49,20 +49,20 @@ const AuthorData = () => {
         });
     }
    
-    const submitGetAuthorById = (evt) => {
-        console.log(id);
+    const submitGetAuthorByName = (evt) => {
+        console.log(name);
         evt.preventDefault();
-        getAuthorByIdService(id)
+        getAuthorByNameService(name)
             .then((response) => {
                 console.log(response.data);
                 setAuthor(response.data);
-                dispatch(fetchAuthorById(response.data)); // step 2 
-                setId('');
+                dispatch(fetchAuthorByName(response.data)); // step 2 
+                setName('');
             })
             .catch((error) => {
                 alert(error);
                 setAuthor(new Author());
-                setId('');
+                setName('');
             })
     }
    
@@ -138,17 +138,17 @@ const AuthorData = () => {
                 <div>
                     <form className="form form-group">
                         <input
-                            type="number"
+                            type="text"
                             className="form-control mb-3 mt-3"
-                            id="authorId"
-                            value={id}
-                            placeholder="Enter Author id"
+                            id="authorName"
+                            value={name}
+                            placeholder="Enter Author name"
                             onChange={handleChange}
                             autoFocus />
-                        <input type="submit" className="form-control mb-3 mt-3 btn btn-outline-primary" value="Get Author" onClick={submitGetAuthorById} />
+                        <input type="submit" className="form-control mb-3 mt-3 btn btn-outline-primary" value="Get Author" onClick={submitGetAuthorByName} />
                     </form>
                 </div>
-                <div> {(author.authorId) &&
+                <div> {(author.authorName) &&
                     <div>
                         <p className="lead text-primary">Author Details from State Object</p>
                         <p>Author Id: {author.authorId} </p>
@@ -179,7 +179,7 @@ const AuthorData = () => {
                     </div>
                 }
                 </div>
-                <div> {(authorDataFromStore.authorId) &&
+                <div> {(authorDataFromStore.authorName) &&
                     <div>
                         <p className="lead text-primary">Author Details from Store</p>
                         <p>Author Id: {authorDataFromStore.authorId} </p>

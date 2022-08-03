@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getAuthorByIdService } from '../services/AuthorService';
+import { getAuthorByNameService } from '../services/AuthorService';
 
-const fetchAuthorById = createAsyncThunk(
-    'authors/fetchByIdRole',
-    async (id, thunkAPI) => {
-        console.log(`fetchAuthorById`);
-        const response = await getAuthorByIdService(id);
+const fetchAuthorByName = createAsyncThunk(
+    'authors/fetchByNameRole',
+    async (name, thunkAPI) => {
+        console.log(`fetchAuthorByName`);
+        const response = await getAuthorByNameService(name);
         return response;
     });
 
@@ -34,7 +34,7 @@ const AuthorSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchAuthorById, (state, action) => {
+        builder.addCase(fetchAuthorByName, (state, action) => {
             console.log(`extraReducers 1`);
             state.authorList.push(action.payload);
         });
@@ -43,7 +43,7 @@ const AuthorSlice = createSlice({
 });
 
 export const { getAuthorById, getAuthorByName, getAllAuthors } = AuthorSlice.actions;
-export { fetchAuthorById };
+export { fetchAuthorByName };
 
 export default AuthorSlice.reducer;
 
