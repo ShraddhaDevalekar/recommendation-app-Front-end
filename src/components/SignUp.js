@@ -35,7 +35,7 @@ const SignUp = () => {
         <div style={{backgroundImage:"url(https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-2650.jpg?w=2000)",backgroundRepeat:"no-repeat", backgroundSize:"contain", 
         height:700,width:900}}>
         <div className="container" >
-            <p className="display-4 text-primary py-3">SignUp</p>
+            <p className="display-4 text-primary py-5">SignUp</p>
             <hr />
             </div>
             <div className="col-3 mt-3 py-3 shadow bg-white" >

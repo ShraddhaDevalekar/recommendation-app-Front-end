@@ -5,6 +5,8 @@ const UserProfile = () => {
 
     const currentUser = useSelector(store => store.appUser.currentUser);
     return (
+        <div style={{backgroundColor:"lightblue",backgroundRepeat:"no-repeat", backgroundSize:"contain"
+    }}>
         <div className="container" >
             <p className="display-4 text-primary py-3">User Profile</p>
             <hr />
@@ -23,7 +25,7 @@ const UserProfile = () => {
             <div className="py-3 ">
                 <Link to="/update" className="btn btn-outline-primary col-3">Update your profile</Link>
             </div>
-
+</div>
         </div>
     );
 }

@@ -110,30 +110,13 @@ const AuthorData = () => {
     }
    
     return (
+        <div style={{backgroundColor:"lightblue",backgroundRepeat:"no-repeat", backgroundSize:"contain"
+    }}>
         <div className="container">
             <p className="display-4 text-primary py-3">AuthorData</p>
             <hr />
-            <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-4">
-                <p className="lead">Add New Author</p>
-                <div className="form form-group" >
-                    <input
-                        type="text"
-                        id="authorName"
-                        name="authorName"
-                        className="form-control mb-3 mt-3"
-                        value={authorToBeAdded.authorName}
-                        onChange={handleAddAuthor}
-                        placeholder="Enter Author Name" />
-                                   
-                     <input
-                        type="submit"
-                        className="btn btn-outline-primary form-control mb-3 mt-3"
-                        value="Add Author"
-                        onClick={submitAddAuthor}
-                    />
-                </div>
-            </div>
-            <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
+           
+            <div className="bg-alert alert-success shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
                 <p className="lead">Find an Author</p>
                 <div>
                     <form className="form form-group">
@@ -196,50 +179,9 @@ const AuthorData = () => {
                 }
                 </div>
             </div>
-            <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-8">
-                <p className="lead">Get Book By Authors</p>
-                <div className="form form-group" >
-                    <input
-                        type="button"
-                        className="btn btn-outline-primary form-control mb-3 mt-3"
-                        value="Get All Authors"
-                        onClick={submitGetAllBooks}
-                    />
-                </div>
-                <div>
-                    <div> {(allBooks) &&
-                        <div>
-                            <p className="text-primary text-center font-weight-bold lead">List of All Athors</p>
-                            {
-                                <table className="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Author Name</th>
-                                            <th>Book Name</th>
-                                            <th>Price</th>
-                                            <th>Rating</th>
-                                            <th>Category</th>
-                                        </tr>
-                                    </thead>
-                                    { allBooks.map((b =>
-                                        <tbody>
-                                            <tr>
-                                            <td>{(b.author && b.author.authorName)}</td>
-                                                <td>{b.bookName}</td>
-                                                <td>{b.price}</td>
-                                                <td>{b.rating}</td>                                                
-                                                <td>{(b.category && b.category.category)}</td>
-                                            </tr>
-                                        </tbody>
-                                    ))}
-                                </table>
-                            }
-                        </div>
-                    }
-                    </div>
-                </div>
-                </div>
+           
         </div >
+        </div>
     );
 }
 

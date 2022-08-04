@@ -38,10 +38,10 @@ const SignIn = () => {
         <div style={{backgroundImage:"url(https://t3.ftcdn.net/jpg/03/15/63/00/240_F_315630073_imLsnbH55tTYicCBXjLC3aT59gggEyVm.jpg)",backgroundRepeat:"no-repeat", backgroundSize:"contain",
     }}>
         <div className="container" >
-            <p className="display-4 text-primary py-3">SignIn</p>
+            {/* <p className="display-4 text-center">SignIn</p> */}
             <hr />
             </div>
-            <div className="col-3 mt-3 py-3 shadow bg-white" >
+            <div className="display-4 text-center col-3 mt-3 py-3 shadow bg-white " >
                 <h1 className="lead text-primary pb-2">SignIn</h1>
                 <form className="form form-group form-dark " onSubmit={submitAppUser}>
                     <div>

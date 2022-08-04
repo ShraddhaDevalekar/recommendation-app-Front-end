@@ -60,41 +60,25 @@ const Header = () => {
                                         Author
                                     </Link>
                                     <div className="dropdown-menu">
-                                        {/* <Link className="dropdown-item" onClick={submitGetAllAuthors}>Your authors are here</Link> */}
                                         <div className="dropdown-divider"></div>
-                                        {/* <input
-                                            type="button"
-                                            className="btn btn-outline-primary form-control mb-3 mt-3"
-                                            value="Get All Authors"
-                                            onClick={submitGetAllAuthors}
-                                        /> */}
                                         <div>
                                             <div> {(allAuthors) &&
                                                 <div>
                                                     {
                                                         <ul className="table">
-                                                            {/* <thead>
-                                                                <tr>
-                                                                    <th>Author Name</th>
-                                                                </tr>
-                                                            </thead> */}
-                                                            {allAuthors.map((a =>
+                                                            {allAuthors.slice(0,7).map((a =>
                                                                 <tbody>
                                                                     <tr>
-                                                                        {/* <li>{a.authorId}</li> */}
                                                                         <li >{a.authorName}</li>
-
-                                                                        {/* <li>{(a.book && a.book.bookId)}</li>
-                                                                        <li>{(a.book && a.book.bookName)}</li>
-                                                                        <li>{(a.book && a.book.price)}</li>
-                                                                        <li>{(a.book && a.book.rating)}</li>
-                                                                       <li>{(a.book && a.book.authorId)}</li>
-                                                                        <li>{(a.book && a.book.categoryId)}</li> */}
                                                                     </tr>
                                                                 </tbody>
                                                             ))}
+                                                 
                                                         </ul>
+                                                        
                                                     }
+                                                     <div> {<Link  to="/viewauthors">All Authors</Link>} </div>
+                                                     <div> {<Link  to="/moreauthorsinfo">More Authors</Link>} </div>
                                                 </div>
                                             }
                                             </div>
@@ -110,41 +94,23 @@ const Header = () => {
                                         Books
                                     </Link>
                                     <div className="dropdown-menu">
-                                        {/* <Link className="dropdown-item" onClick={submitGetAllAuthors}>Your authors are here</Link> */}
                                         <div className="dropdown-divider"></div>
-                                        {/* <input
-                                            type="button"
-                                            className="btn btn-outline-primary form-control mb-3 mt-3"
-                                            value="Get All Authors"
-                                            onClick={submitGetAllAuthors}
-                                        /> */}
                                         <div>
                                             <div> {(allBooks) &&
                                                 <div>
                                                     {
                                                         <ul className="table">
-                                                            {/* <thead>
-                                                                <tr>
-                                                                    <th>Author Name</th>
-                                                                </tr>
-                                                            </thead> */}
-                                                            {allBooks.map((b =>
+                                                            {allBooks.slice(0,7).map((b =>
                                                                 <tbody>
                                                                     <tr>
-                                                                        {/* <li>{a.authorId}</li> */}
                                                                         <li >{b.bookName}</li>
-
-                                                                        {/* <li>{(a.book && a.book.bookId)}</li>
-                                                                        <li>{(a.book && a.book.bookName)}</li>
-                                                                        <li>{(a.book && a.book.price)}</li>
-                                                                        <li>{(a.book && a.book.rating)}</li>
-                                                                       <li>{(a.book && a.book.authorId)}</li>
-                                                                        <li>{(a.book && a.book.categoryId)}</li> */}
                                                                     </tr>
                                                                 </tbody>
                                                             ))}
                                                         </ul>
                                                     }
+                                                     <div> {<Link  to="/viewbooks">View All Books</Link>} </div>
+                                                     <div> {<Link  to="/morebooksinfo">More Books</Link>} </div>
                                                 </div>
                                             }
                                             </div>
@@ -153,8 +119,10 @@ const Header = () => {
                                 </div>
                             }
                             </div>
+                         
                             <div> {signInStatus && <Link className="nav-link" to='/authordata'>AuthorData</Link>} </div>
                             <div> {signInStatus && <Link className="nav-link" to='/bookdata'>BookData</Link>} </div>
+                            <div> {signInStatus && <Link className="nav-link" to='/admin'>Admin</Link>} </div>
                             <div> {!signInStatus && <Link className="nav-link" to='/signup'>SignUp</Link>} </div>
                             <div> {!signInStatus && <Link className="nav-link" to='/signin'>SignIn</Link>} </div>
                             <div> {!signInStatus && <Link className="nav-link" to='/about'>About</Link>} </div>
@@ -166,7 +134,6 @@ const Header = () => {
                                     <div className="dropdown-menu">
                                         <Link className="dropdown-item" to="/profile">View</Link>
                                         <Link className="dropdown-item" to="/update">Update</Link>
-                                        <Link className="dropdown-item" to="/update">Admin </Link>
                                         <div className="dropdown-divider"></div>
                                         <button
                                             type="button"

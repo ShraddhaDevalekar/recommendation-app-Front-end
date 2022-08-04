@@ -11,7 +11,11 @@ import UpdateUser from './components/UpdateUser';
 import Footer from './components/Footer';
 import About from './components/About';
 import AuthorData from "./components/AuthorData";
-
+import ViewAuthors from "./components/ViewAuthors";
+import ViewBooks from "./components/ViewBooks";
+import Admin from "./components/Admin";
+import MoreAuthorsInfo from "./components/MoreAuthorsInfo";
+import MoreBooksInfo from "./components/MoreBooksInfo";
 const Routes = () => {
 
     const signInStatus = useSelector((store) => { return store.appUser.isSignedIn; });
@@ -25,11 +29,16 @@ const Routes = () => {
                             <Header />
                             <div style={{ minHeight: "92vh" }} >
                                 <Switch>
+                                    <Route path='/viewauthors'> <ViewAuthors /> </Route>
+                                    <Route path='/viewbooks'> <ViewBooks/> </Route>
+                                    <Route path='/moreauthorsinfo'> <MoreAuthorsInfo /> </Route>
+                                    <Route path='/morebooksinfo'> <MoreBooksInfo /> </Route>
                                     <Route path='/bookdata'> <BookData /> </Route>
                                     <Route path='/authordata'> <AuthorData /> </Route>
                                     <Route path='/signout'> <SignOut /> </Route>
                                     <Route path='/profile'> <UserProfile />  </Route>
                                     <Route path='/update'> <UpdateUser />  </Route>
+                                    <Route path='/admin'> <Admin /> </Route>
                                     <Route path='/footer'> <Footer /> </Route>
                                     <Route path='/'> <Home />  </Route>
                                 </Switch>

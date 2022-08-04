@@ -84,101 +84,15 @@ const BookData = () => {
             });
     }
 
-    const submitAddBook = (evt) => {
-        evt.preventDefault();
-        let bookTemp = { ...bookToBeAdded, author, category };
-        addBookService(bookTemp)
-            .then((response) => {
-                console.log(response.data);
-                alert(`Book ${response.data.bookName} added successfully.`);
-            })
-            .catch(() => {
-                setBookToBeAdded(new Book());
-                bookTemp = '';
-                alert("Book could not be added.");
-            });
-    }
+  
 
     return (
+        <div style={{backgroundColor:"lightblue",backgroundRepeat:"no-repeat", backgroundSize:"contain"
+    }}>
         <div className="container">
             <p className="display-4 text-primary py-3">BookData</p>
-            <hr />
-            <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-4">
-                <p className="lead">Add New Book</p>
-                <div className="form form-group" >
-               
-                    <input
-                        type="text"
-                        id="bookName"
-                        name="bookName"
-                        className="form-control mb-3 mt-3"
-                        value={bookToBeAdded.bookName}
-                        onChange={handleAddBook}
-                        placeholder="Enter Book Name" />
-
-                    <input
-                        type="number"
-                        id="price"
-                        name="price"
-                        className="form-control mb-3 mt-3"
-                        value={bookToBeAdded.price}
-                        onChange={handleAddBook}
-                        placeholder="Enter Book Price" />
-                  
-                    <input
-                        type="number"
-                        id="authorId"
-                        name="authorId"
-                        className="form-control mb-3 mt-3"
-                        value={author.authorId}
-                        onChange={handleAddBook}
-                        placeholder="Enter Author Id" />
-
-                   <input
-                        type="text"
-                        id="authorName"
-                        name="authorName"
-                        className="form-control mb-3 mt-3"
-                        value={author.authorName}
-                        onChange={handleAddBook}
-                        placeholder="Enter Author Name" />
-
-                    <input
-                        type="number"
-                        id="categoryId"
-                        name="categoryId"
-                        className="form-control mb-3 mt-3"
-                        value={category.categoryId}
-                        onChange={handleAddBook}
-                        placeholder="Enter Category Id" />
-
-                  <input
-                        type="text"
-                        id="category"
-                        name="category"
-                        className="form-control mb-3 mt-3"
-                        value={category.category}
-                        onChange={handleAddBook}
-                        placeholder="Enter Category" />
-
-                 <input
-                        type="number"
-                        id="rating"
-                        name="rating"
-                        className="form-control mb-3 mt-3"
-                        value={bookToBeAdded.rating}
-                        onChange={handleAddBook}
-                        placeholder="Enter Book Rating" />
-                    
-                    <input
-                        type="submit"
-                        className="btn btn-outline-primary form-control mb-3 mt-3"
-                        value="Add Book"
-                        onClick={submitAddBook}
-                    />
-                </div>
-            </div>
-            <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-4">
+           
+            <div className="bg-alert alert-danger shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-4">
                 <p className="lead">Find your favourite book</p>
                 <div>
                     <form className="form form-group">
@@ -197,7 +111,7 @@ const BookData = () => {
                 <div> {(book.bookName) &&
                     <div>
                         <p className="lead text-primary">Your book details are here...</p>
-                        {/* <p> Book Id: {book.bookId} </p> */}
+                      
                         <p>Book Name: {book.bookName} </p>
                         <p>Price: {book.price}  </p>
                         <p>Rating: {book.rating}  </p>
@@ -223,54 +137,19 @@ const BookData = () => {
                 }
                 </div>
             </div>
-            {/* <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
-                <p className="lead">Get All Books</p>
-                <div className="form form-group" >
+          
+            {/* <div className="bg-alert alert-warning shadow shadow-regular mb-4 mt-4 px-4 py-4 pb-4 pt-4 col-10">
+                <p className="lead">Book store is here..</p> */}
+                {/* <div className="form form-group" >
                     <input
                         type="button"
                         className="btn btn-outline-primary form-control mb-3 mt-3"
                         value="Get All Books"
                         onClick={submitGetAllBooks}
                     />
-                </div>
+                </div> */}
                 <div>
-                    <div> {(allBooks) &&
-                        <div>
-                            <p className="text-primary text-center font-weight-bold lead">List of All Books</p>
-                            {
-                                <table className="table">
-                                    <thead>
-                                        <tr>
-                                           
-                                            <th>Books Name</th>
-                                        </tr>
-                                    </thead>
-                                    {allBooks.map((b =>
-                                        <tbody>
-                                            <tr>
-                                                <td>{b.bookName}</td>
-                                            </tr>
-                                        </tbody>
-                                    ))}
-                                </table>
-                            }
-                        </div>
-                    }
-                    </div>
-                </div>
-            </div> */}
-            <div className="bg-white shadow shadow-regular mb-4 mt-4 px-4 py-4 pb-4 pt-4 col-10">
-                <p className="lead">Book store is here..</p>
-                <div className="form form-group" >
-                    <input
-                        type="button"
-                        className="btn btn-outline-primary form-control mb-3 mt-3"
-                        value="Get All Books"
-                        onClick={submitGetAllBooks}
-                    />
-                </div>
-                <div>
-                    <div> {(allBooks) &&
+                    {/* <div> {(allBooks) &&
                         <div>
                             <p className="text-primary text-center font-weight-bold lead">List of All Books</p>
                             {
@@ -299,10 +178,11 @@ const BookData = () => {
                             }
                         </div>
                     }
-                    </div>
+                    </div> */}
                 </div>
-            </div>
+           
         </div >
+        </div>
     );
 }
 
