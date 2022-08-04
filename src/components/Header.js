@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SignOut from './SignOut';
+
 import { getAllAuthorsService } from "../services/AuthorService";
 import { getAllBooksService } from "../services/BookService";
-
+import { getAllCategoryService } from "../services/CategoryService";
 
 const Header = () => {
 
@@ -12,7 +13,7 @@ const Header = () => {
 
     const [allAuthors, setAllAuthors] = useState([]);
     const [allBooks, setAllBooks] = useState([]);
-
+    const [allCategory, setAllCategory] = useState([]);
 
     const submitGetAllAuthors = (evt) => {
         evt.preventDefault();
@@ -41,6 +42,19 @@ const Header = () => {
                 setAllBooks([]);
             });
     }
+    const submitGetAllCategory= (evt) => {
+        evt.preventDefault();
+        getAllCategoryService()
+            .then((response) => {
+                setAllCategory(response.data);
+                console.log(response.data);
+                console.log(allCategory);
+            })
+            .catch((error) => {
+                alert(error);
+                setAllCategory([]);
+            });
+    }
 
     return (
         <div className=' bg-dark'>
@@ -52,6 +66,7 @@ const Header = () => {
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
+
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className=" navbar-nav ml-auto">
                              <div> {signInStatus &&
@@ -126,7 +141,39 @@ const Header = () => {
                                 </div>
                             }
                             </div>
-                         
+                            <div> {signInStatus &&
+                                <div className="nav-item dropdown navbar-dark">
+                                    <Link className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" onClick={submitGetAllCategory}>
+                                    Category
+                                    </Link>
+                                    <div className="dropdown-menu">
+                                        <div className="dropdown-divider"></div>
+                                        <div>
+                                            <div> {(allCategory) &&
+                                                <div>
+                                                    {
+                                                        <ul className="table">
+                                                            {allCategory.slice(0,7).map((c =>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <li >{c.categoryName}</li>
+                                                                    </tr>
+                                                                </tbody>
+                                                            ))}
+                                                 
+                                                        </ul>
+                                                        
+                                                    }
+                                                     <div> {<Link  to="/viewCategory">All Category</Link>} </div>
+                                                     <div> {<Link  to="/moreCategorysinfo">More Category</Link>} </div>
+                                                </div>
+                                            }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            </div>
                             <div> {signInStatus && <Link className="nav-link" to='/search'>Search</Link>} </div>
                             <div> {signInStatus && <Link className="nav-link" to='/admin'>Admin</Link>} </div>
                             <div> {!signInStatus && <Link className="nav-link" to='/signup'>SignUp</Link>} </div>

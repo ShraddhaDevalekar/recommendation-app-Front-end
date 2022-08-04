@@ -38,7 +38,6 @@ const SignIn = () => {
         <div style={{backgroundImage:"url(https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-2650.jpg?w=2000)",backgroundSize:"contain",
     }}>
         <div className="container" >
-            {/* <p className="display-4 text-center">SignIn</p> */}
             <hr />
             </div>
             <div class="row justify-content-md-center">
