@@ -1,22 +1,20 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Book from "../models/Book";
-import Author from "../models/Author";
-import Category from "../models/Category";
 import { fetchBookByName } from "../redux/BookSlice";
-import { getBookByNameService, getAllBooksService, addBookService } from "../services/BookService";
+import { getBookByNameService} from "../services/BookService";
+import Author from "../models/Author";
+import { fetchAuthorByName } from "../redux/AuthorSlice";
+import { getAuthorByNameService} from "../services/AuthorService";
 
 const BookData = () => {
 
     const [name, setName] = useState('');
     const [book, setBook] = useState(new Book());
-    const [bookToBeAdded, setBookToBeAdded] = useState(new Book());
     const [author, setAuthor] = useState(new Author());
-    const [category, setCategory] = useState(new Category());
-    const [allBooks, setAllBooks] = useState([]);
-
     // fetch data from store
     const bookDataFromStore = useSelector((store) => { return store.book.bookObj; });
+    const authorDataFromStore = useSelector((store) => { return store.author.authorObj; });
 
     // send data to store - steps - 1, 2
     // step 1
@@ -34,25 +32,7 @@ const BookData = () => {
         setName(evt.target.value);
     }
 
-    const handleAddBook = (b) => {
-        console.log(b.target.name);
-        console.log(b.target.value);
-        setBookToBeAdded({
-            ...bookToBeAdded,
-            [b.target.name]: b.target.value
-        });
-
-        setAuthor({
-            ...author,
-            [b.target.name]: b.target.value
-        });
-    
-     
-       setCategory({
-        ...category,
-        [b.target.name]: b.target.value
-    });
-}
+   
     const submitGetBookByName = (evt) => {
         console.log(name);
         evt.preventDefault();
@@ -69,26 +49,28 @@ const BookData = () => {
                 setName('');
             })
     }
-  
-    const submitGetAllBooks= (evt) => {
+    const submitGetAuthorByName = (evt) => {
+        console.log(name);
         evt.preventDefault();
-        getAllBooksService()
+        getAuthorByNameService(name)
             .then((response) => {
-                setAllBooks(response.data);
                 console.log(response.data);
-                console.log(allBooks);
+                setAuthor(response.data);
+                dispatch(fetchAuthorByName(response.data)); // step 2 
+                setName('');
             })
             .catch((error) => {
                 alert(error);
-                setAllBooks([]);
-            });
+                setAuthor(new Author());
+                setName('');
+            })
     }
-
+   
   
-
     return (
         <div style={{backgroundColor:"lightblue",backgroundRepeat:"no-repeat", backgroundSize:"contain"
     }}>
+        
         <div className="container">
             <p className="display-4 text-primary py-3">BookData</p>
            
@@ -137,52 +119,90 @@ const BookData = () => {
                 }
                 </div>
             </div>
-          
-            {/* <div className="bg-alert alert-warning shadow shadow-regular mb-4 mt-4 px-4 py-4 pb-4 pt-4 col-10">
-                <p className="lead">Book store is here..</p> */}
-                {/* <div className="form form-group" >
-                    <input
-                        type="button"
-                        className="btn btn-outline-primary form-control mb-3 mt-3"
-                        value="Get All Books"
-                        onClick={submitGetAllBooks}
-                    />
-                </div> */}
+                </div>
+            
+                <div className="container">
+            <p className="display-4 text-primary py-3">AuthorData</p>
+            <hr />
+           
+            <div className="bg-alert alert-success shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
+                <p className="lead">Find an Author</p>
                 <div>
-                    {/* <div> {(allBooks) &&
-                        <div>
-                            <p className="text-primary text-center font-weight-bold lead">List of All Books</p>
-                            {
-                                <table className="table">
+                    <form className="form form-group">
+                        <input
+                            type="text"
+                            className="form-control mb-3 mt-3"
+                            id="authorName"
+                            value={name}
+                            placeholder="Enter Author name"
+                            onChange={handleChange}
+                            autoFocus />
+                        <input type="submit" className="form-control mb-3 mt-3 btn btn-outline-primary" value="Get Author" onClick={submitGetAuthorByName} />
+                    </form>
+                </div>
+                <div> {(author.authorName) &&
+                    <div>
+                        <p className="lead text-primary">Author Details from State Object</p>
+                        <p>Author Id: {author.authorId} </p>
+                        <p>Author Name: {author.authorName} </p>
+                        <table className="table">
                                     <thead>
                                         <tr>
-                                            <th>Book Name</th>
-                                            <th>Author Name</th>
-                                            <th>Category </th>
-                                            <th>Rating</th>
+                                            <th>BookId</th>
+                                            <th>BookName</th>
                                             <th>Price</th>
+                                            <th>CategoryId</th>
+                                            <th>Category</th>
+                                            <th>Rating</th>
                                         </tr>
                                     </thead>
-                                    {allBooks.map((b =>
-                                        <tbody>
-                                            <tr>
-                                                <td>{b.bookName}</td>
-                                                <td>{(b.author && b.author.authorName)}</td>
-                                                <td>{(b.category && b.category.category)}</td>
-                                                <td>{b.rating}</td>
-                                                <td>{b.price}</td>
-                                            </tr>
-                                        </tbody>
-                                    ))}
-                                </table>
-                            }
-                        </div>
-                    }
-                    </div> */}
+                        {author.books.map((b => <tbody>
+                        <tr>
+                        <td>{b.bookId}</td>
+                        <td>{b.bookName}</td>
+                        <td>{b.price}</td>
+                        <td>{b.category.categoryId}</td>
+                        <td>{b.category.category}</td>
+                        <td>{b.rating}</td>
+                        </tr>
+                        </tbody>
+                         ))}
+                       </table> 
+                    </div>
+                }
                 </div>
+                <div> {(authorDataFromStore.authorName) &&
+                    <div>
+                        <p className="lead text-primary">Author Details from Store</p>
+                        <p>Author Id: {authorDataFromStore.authorId} </p>
+                        <p>Author Name: {authorDataFromStore.authorName} </p>
+                      
+                       <p>{(authorDataFromStore.books && authorDataFromStore.books.bookId)}</p>
+                       <p>{(authorDataFromStore.books && authorDataFromStore.books.bookName)}</p>
+                       <p>{(authorDataFromStore.books && authorDataFromStore.books.price)}</p>
+                       <p>{(authorDataFromStore.books && authorDataFromStore.books.categoryId)}</p>
+                       <p>{(authorDataFromStore.books && authorDataFromStore.books.category)}</p>
+                       <p>{(authorDataFromStore.books && authorDataFromStore.books.rating)}</p>
+                        
+                    </div>
+                }
+                </div>
+            </div>
            
         </div >
-        </div>
+            
+            
+            
+            
+            
+            
+            
+            </div >
+
+
+
+
+      
     );
 }
 

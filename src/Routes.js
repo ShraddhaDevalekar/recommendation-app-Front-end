@@ -10,7 +10,7 @@ import UserProfile from './components/UserProfile';
 import UpdateUser from './components/UpdateUser';
 import Footer from './components/Footer';
 import About from './components/About';
-import AuthorData from "./components/AuthorData";
+// import AuthorData from "./components/AuthorData";
 import ViewAuthors from "./components/ViewAuthors";
 import ViewBooks from "./components/ViewBooks";
 import Admin from "./components/Admin";
@@ -34,7 +34,7 @@ const Routes = () => {
                                     <Route path='/moreauthorsinfo'> <MoreAuthorsInfo /> </Route>
                                     <Route path='/morebooksinfo'> <MoreBooksInfo /> </Route>
                                     <Route path='/bookdata'> <BookData /> </Route>
-                                    <Route path='/authordata'> <AuthorData /> </Route>
+                                    {/* <Route path='/authordata'> <AuthorData /> </Route> */}
                                     <Route path='/signout'> <SignOut /> </Route>
                                     <Route path='/profile'> <UserProfile />  </Route>
                                     <Route path='/update'> <UpdateUser />  </Route>

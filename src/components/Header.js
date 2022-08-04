@@ -77,8 +77,12 @@ const Header = () => {
                                                         </ul>
                                                         
                                                     }
-                                                     <div> {<Link  to="/viewauthors">All Authors</Link>} </div>
-                                                     <div> {<Link  to="/moreauthorsinfo">More Authors</Link>} </div>
+                                                    <ul>
+                                                 
+                                                     <div><li>{<Link  to="/viewauthors">Author List</Link>} </li> </div>
+                                                     <div><li>{<Link  to="/moreauthorsinfo">Author's Book</Link>} </li></div>
+                                                                                                  
+                                                    </ul>
                                                 </div>
                                             }
                                             </div>
@@ -109,8 +113,11 @@ const Header = () => {
                                                             ))}
                                                         </ul>
                                                     }
-                                                     <div> {<Link  to="/viewbooks">View All Books</Link>} </div>
-                                                     <div> {<Link  to="/morebooksinfo">More Books</Link>} </div>
+
+                                                    <ul>
+                                                     <div><li>{<Link  to="/viewbooks">Book List</Link>}</li> </div>
+                                                     <div><li> {<Link  to="/morebooksinfo">Book's Author</Link>} </li></div>
+                                                     </ul>
                                                 </div>
                                             }
                                             </div>
@@ -120,7 +127,7 @@ const Header = () => {
                             }
                             </div>
                          
-                            <div> {signInStatus && <Link className="nav-link" to='/authordata'>AuthorData</Link>} </div>
+                            {/* <div> {signInStatus && <Link className="nav-link" to='/authordata'>AuthorData</Link>} </div> */}
                             <div> {signInStatus && <Link className="nav-link" to='/bookdata'>BookData</Link>} </div>
                             <div> {signInStatus && <Link className="nav-link" to='/admin'>Admin</Link>} </div>
                             <div> {!signInStatus && <Link className="nav-link" to='/signup'>SignUp</Link>} </div>
