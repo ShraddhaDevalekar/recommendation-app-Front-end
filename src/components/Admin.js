@@ -86,10 +86,11 @@ const Admin = () => {
         <div style={{backgroundColor:"lightblue",backgroundRepeat:"no-repeat", backgroundSize:"contain"
     }}>
         <div className="container">
-            <p className="display-4 text-primary py-3">BookData</p>
+            <p style={{ textAlign:'center'}} className="display-4 text-primary py-3">Add Book</p>
             <hr />
-            <div className="bg-alert alert-danger shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-4">
-                <p className="lead">Add New Book</p>
+            <div class="row justify-content-md-center">
+            <div className="bg-alert alert-danger shadow shadow-regular  col-md-6 ">               
+             <p className="lead">Add New Book</p>
                 <div className="form form-group" >
                
                     <input
@@ -163,12 +164,13 @@ const Admin = () => {
                     />
                 </div>
             </div>
-        
+           </div>
             <div className="container">
-            <p className="display-4 text-primary py-3">AuthorData</p>
+            <p style={{ textAlign:'center'}} className="display-4 text-primary py-3">Add Author</p>
             <hr />
-            <div className="bg-alert alert-success shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-4">
-                <p className="lead">Add New Author</p>
+            <div class="row justify-content-md-center">
+            <div className="bg-alert alert-success shadow shadow-regular  col-md-6 ">                
+            <p className="lead">Add New Author</p>
                 <div className="form form-group" >
                     <input
                         type="text"
@@ -187,6 +189,7 @@ const Admin = () => {
                     />
                 </div>
             </div>
+        </div>
         </div>
         </div>
         </div>

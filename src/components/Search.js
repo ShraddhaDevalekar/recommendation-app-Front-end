@@ -7,9 +7,10 @@ import Author from "../models/Author";
 import { fetchAuthorByName } from "../redux/AuthorSlice";
 import { getAuthorByNameService} from "../services/AuthorService";
 
-const BookData = () => {
+const Search = () => {
 
     const [name, setName] = useState('');
+    const [authorName, setAuthorName] = useState('');
     const [book, setBook] = useState(new Book());
     const [author, setAuthor] = useState(new Author());
     // fetch data from store
@@ -31,6 +32,12 @@ const BookData = () => {
         console.log(evt.target.value);
         setName(evt.target.value);
     }
+    
+    const handleChange1 = (evt) => {
+        console.log(evt.target.authorName);
+        console.log(evt.target.value);
+        setAuthorName(evt.target.value);
+    }
 
    
     const submitGetBookByName = (evt) => {
@@ -50,19 +57,19 @@ const BookData = () => {
             })
     }
     const submitGetAuthorByName = (evt) => {
-        console.log(name);
+        console.log(authorName);
         evt.preventDefault();
-        getAuthorByNameService(name)
+        getAuthorByNameService(authorName)
             .then((response) => {
                 console.log(response.data);
                 setAuthor(response.data);
                 dispatch(fetchAuthorByName(response.data)); // step 2 
-                setName('');
+                setAuthorName('');
             })
             .catch((error) => {
                 alert(error);
                 setAuthor(new Author());
-                setName('');
+                setAuthorName('');
             })
     }
    
@@ -72,10 +79,10 @@ const BookData = () => {
     }}>
         
         <div className="container">
-            <p className="display-4 text-primary py-3">BookData</p>
-           
-            <div className="bg-alert alert-danger shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-4">
-                <p className="lead">Find your favourite book</p>
+          <br></br>
+           <div class="row justify-content-md-center">
+            <div className="bg-alert alert-danger shadow shadow-regular  col-md-6 ">
+                <p className="lead">Find Your Favourite Book..</p>
                 <div>
                     <form className="form form-group">
                         <input
@@ -100,7 +107,7 @@ const BookData = () => {
                         <p>Author Id: {(book.author && book.author.authorId)}</p>
                         <p>Author Name: {(book.author && book.author.authorName)}</p>
                         <p>Category Id: {(book.category && book.category.categoryId)}</p>
-                        <p>Category Name: {(book.category && book.category.category)}</p>
+                        <p>Category Name: {(book.category && book.category.categoryName)}</p>
                     </div>
                 }
                 </div>
@@ -114,28 +121,31 @@ const BookData = () => {
                         <p>{(bookDataFromStore.author && bookDataFromStore.author.authorId)}</p>
                         <p>{(bookDataFromStore.author && bookDataFromStore.author.authorName)}</p>
                         <p>{(bookDataFromStore.category && bookDataFromStore.category.categoryId)}</p>
-                        <p>{(bookDataFromStore.category && bookDataFromStore.category.category)}</p>
+                        <p>{(bookDataFromStore.category && bookDataFromStore.category.categoryName)}</p>
                     </div>
                 }
                 </div>
             </div>
+            </div>
                 </div>
             
                 <div className="container">
-            <p className="display-4 text-primary py-3">AuthorData</p>
+          
             <hr />
-           
-            <div className="bg-alert alert-success shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
-                <p className="lead">Find an Author</p>
+            <br />
+            <br />
+            <div class="row justify-content-md-center">
+            <div className="bg-alert alert-success shadow shadow-regular col-md-6">
+                <p className="lead">Find Your Favourite Author Here..</p>
                 <div>
                     <form className="form form-group">
                         <input
                             type="text"
                             className="form-control mb-3 mt-3"
                             id="authorName"
-                            value={name}
+                            value={authorName}
                             placeholder="Enter Author name"
-                            onChange={handleChange}
+                            onChange={handleChange1}
                             autoFocus />
                         <input type="submit" className="form-control mb-3 mt-3 btn btn-outline-primary" value="Get Author" onClick={submitGetAuthorByName} />
                     </form>
@@ -162,7 +172,7 @@ const BookData = () => {
                         <td>{b.bookName}</td>
                         <td>{b.price}</td>
                         <td>{b.category.categoryId}</td>
-                        <td>{b.category.category}</td>
+                        <td>{b.category.categoryName}</td>
                         <td>{b.rating}</td>
                         </tr>
                         </tbody>
@@ -181,29 +191,19 @@ const BookData = () => {
                        <p>{(authorDataFromStore.books && authorDataFromStore.books.bookName)}</p>
                        <p>{(authorDataFromStore.books && authorDataFromStore.books.price)}</p>
                        <p>{(authorDataFromStore.books && authorDataFromStore.books.categoryId)}</p>
-                       <p>{(authorDataFromStore.books && authorDataFromStore.books.category)}</p>
+                       <p>{(authorDataFromStore.books && authorDataFromStore.books.categoryName)}</p>
                        <p>{(authorDataFromStore.books && authorDataFromStore.books.rating)}</p>
                         
                     </div>
                 }
                 </div>
             </div>
-           
-        </div >
-            
-            
-            
-            
-            
+            </div>
+        </div >            
             
             
             </div >
-
-
-
-
-      
     );
 }
 
-export default BookData;
+export default Search;

@@ -60,7 +60,7 @@ const MoreAuthorsInfo = () => {
                                             <td>{b.bookName}</td>
                                             <td>{b.price}</td>
                                             <td>{b.rating}</td>
-                                            <td>{(b.category && b.category.category)}</td>
+                                            <td>{(b.category && b.category.categoryName)}</td>
                                         </tr>
                                     </tbody>
                                 ))}

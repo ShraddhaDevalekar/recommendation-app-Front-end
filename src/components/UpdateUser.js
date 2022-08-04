@@ -37,10 +37,12 @@ const UpdateUser = () => {
     }
 
     return (
+        <div style={{backgroundColor:"lightblue",backgroundRepeat:"no-repeat", backgroundSize:"contain"
+    }}>
         <div className="container" >
             <p className="display-4 text-primary py-3">Update User Profile</p>
             <hr />
-            <div className="col-3 mt-3 py-3 shadow bg-white" >
+            <div className="col-3 mt-3 py-3 shadow bg-alert alert-warning" >
                 <h1 className="lead text-primary pb-2">Update</h1>
                 <form className="form form-group form-dark " onSubmit={submitAppUser}>
                     <div>
@@ -83,6 +85,7 @@ const UpdateUser = () => {
                 </form>
             </div>
         </div >
+        </div>
     )
 }
 export default UpdateUser;

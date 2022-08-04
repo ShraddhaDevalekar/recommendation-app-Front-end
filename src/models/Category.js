@@ -1,6 +1,6 @@
 class Category{
 
     categoryId;
-    category;
+    categoryName;
 }
 export default Category;

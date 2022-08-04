@@ -25,7 +25,7 @@ const SignIn = () => {
             .then((response) => {
                 dispatch(signInUser(response.data));
                 alert(`Sign In successful for ${response.data.userName}!`);
-                history.push("/");
+                history.push("/bookdata");
             })
             .catch((error) => {
                 dispatch(signOutUser());
@@ -35,14 +35,15 @@ const SignIn = () => {
     }
 
     return (
-        <div style={{backgroundImage:"url(https://t3.ftcdn.net/jpg/03/15/63/00/240_F_315630073_imLsnbH55tTYicCBXjLC3aT59gggEyVm.jpg)",backgroundRepeat:"no-repeat", backgroundSize:"contain",
+        <div style={{backgroundImage:"url(https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-2650.jpg?w=2000)",backgroundSize:"contain",
     }}>
         <div className="container" >
             {/* <p className="display-4 text-center">SignIn</p> */}
             <hr />
             </div>
-            <div className="display-4 text-center col-3 mt-3 py-3 shadow bg-white " >
-                <h1 className="lead text-primary pb-2">SignIn</h1>
+            <div class="row justify-content-md-center">
+            <div className="bg-alert alert-danger shadow shadow-regular  col-md-3 ">   
+            <h1 style={{ textAlign:'center'}}>SignIn</h1>
                 <form className="form form-group form-dark " onSubmit={submitAppUser}>
                     <div>
                         <input
@@ -79,13 +80,17 @@ const SignIn = () => {
                             className="form-control btn btn-outline-primary"
                             value="SignIn"
                         />
+                        &nbsp;
+                         <Link to="/signUp" className="form-control btn btn-outline-danger">You can also Sign Up. Click here</Link>
                     </div>
                 </form>
+                </div>
             </div>
             <div className="py-3 ">
-                <Link to="/signUp" className="btn btn-outline-primary col-3">You can also Sign Up. Click here</Link>
+               
             </div>
         </div >
+        
     )
 }
 export default SignIn;

@@ -127,8 +127,7 @@ const Header = () => {
                             }
                             </div>
                          
-                            {/* <div> {signInStatus && <Link className="nav-link" to='/authordata'>AuthorData</Link>} </div> */}
-                            <div> {signInStatus && <Link className="nav-link" to='/bookdata'>BookData</Link>} </div>
+                            <div> {signInStatus && <Link className="nav-link" to='/search'>Search</Link>} </div>
                             <div> {signInStatus && <Link className="nav-link" to='/admin'>Admin</Link>} </div>
                             <div> {!signInStatus && <Link className="nav-link" to='/signup'>SignUp</Link>} </div>
                             <div> {!signInStatus && <Link className="nav-link" to='/signin'>SignIn</Link>} </div>

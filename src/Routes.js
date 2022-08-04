@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import BookData from './components/BookData';
+import Search from './components/Search';
 import Header from './components/Header';
 import Home from './components/Home';
 import SignIn from './components/SignIn';
@@ -33,7 +33,7 @@ const Routes = () => {
                                     <Route path='/viewbooks'> <ViewBooks/> </Route>
                                     <Route path='/moreauthorsinfo'> <MoreAuthorsInfo /> </Route>
                                     <Route path='/morebooksinfo'> <MoreBooksInfo /> </Route>
-                                    <Route path='/bookdata'> <BookData /> </Route>
+                                    <Route path='/search'> <Search /> </Route>
                                     {/* <Route path='/authordata'> <AuthorData /> </Route> */}
                                     <Route path='/signout'> <SignOut /> </Route>
                                     <Route path='/profile'> <UserProfile />  </Route>
