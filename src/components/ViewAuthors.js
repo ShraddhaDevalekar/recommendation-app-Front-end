@@ -39,7 +39,7 @@ const ViewAuthors = () => {
                         type="button"
                         className="btn btn-outline-primary form-control mb-3 mt-3"
                         value="Get All Authors"
-                        onClick={submitGetAllAuthors}
+                        onMouseDown={submitGetAllAuthors}
                     />
                 </div>
                 <div>

@@ -25,7 +25,7 @@ const SignIn = () => {
             .then((response) => {
                 dispatch(signInUser(response.data));
                 alert(`Sign In successful for ${response.data.userName}!`);
-                history.push("/bookdata");
+                history.push("/search");
             })
             .catch((error) => {
                 dispatch(signOutUser());

@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-// Create services for other components in this way. 
-
 const springBootAppUrl = `http://localhost:9999/`;
 
 const getCategoryByIdService = (id) => {
@@ -19,9 +17,7 @@ const getAllCategoryService = () => {
 
 const addCategoryService = (category) => {
     console.log(`addCategoryService`);
-    return axios.post(`${springBootAppUrl}admin/addCategory`,category);
+    return axios.post(`${springBootAppUrl}admin/addCategory`, category);
 }
 
-// add more functionalities here 
-
-export { getCategoryByIdService,getCategoryByNameService, getAllCategoryService, addCategoryService };
+export { getCategoryByIdService, getCategoryByNameService, getAllCategoryService, addCategoryService };

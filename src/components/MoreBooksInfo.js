@@ -11,21 +11,22 @@ const MoreBooksInfo = () => {
         }
         , []);
 
-        const submitGetAllBooks= (evt) => {
-            evt.preventDefault();
-            getAllBooksService()
-                .then((response) => {
-                    setAllBooks(response.data);
-                    console.log(response.data);
-                    console.log(allBooks);
-                })
-                .catch((error) => {
-                    alert(error);
-                    setAllBooks([]);
-                });
-        }
-        return (
-            <div style={{backgroundColor:"lightblue",backgroundRepeat:"no-repeat", backgroundSize:"contain"
+    const submitGetAllBooks = (evt) => {
+        evt.preventDefault();
+        getAllBooksService()
+            .then((response) => {
+                setAllBooks(response.data);
+                console.log(response.data);
+                console.log(allBooks);
+            })
+            .catch((error) => {
+                alert(error);
+                setAllBooks([]);
+            });
+    }
+    return (
+        <div style={{
+            backgroundColor: "lightblue", backgroundRepeat: "no-repeat", backgroundSize: "contain"
         }}>
             <div className="bg-alert alert-danger shadow shadow-regular mb-4 mt-4 px-4 py-4 pb-4 pt-4 col-10">
                 <p className="lead">Book store is here..</p>
@@ -70,7 +71,7 @@ const MoreBooksInfo = () => {
                     </div>
                 </div>
             </div>
-         </div>
+        </div>
     );
 }
 

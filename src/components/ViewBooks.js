@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Book from "../models/Book";
-import Author from "../models/Author";
-import Category from "../models/Category";
 import { getBookByNameService, getAllBooksService, addBookService } from "../services/BookService";
 
 const ViewBooks = () => {
 
-    
     const [allBooks, setAllBooks] = useState([]);
 
     // fetch data from store
@@ -23,10 +19,7 @@ const ViewBooks = () => {
         }
         , []);
 
-    
-
-    
-    const submitGetAllBooks= (evt) => {
+    const submitGetAllBooks = (evt) => {
         evt.preventDefault();
         getAllBooksService()
             .then((response) => {
@@ -41,9 +34,10 @@ const ViewBooks = () => {
     }
 
     return (
-        <div style={{backgroundColor:"lightblue",backgroundRepeat:"no-repeat", backgroundSize:"contain",backgroundPosition: 'right'
+        <div style={{
+            backgroundColor: "lightblue", backgroundRepeat: "no-repeat", backgroundSize: "contain", backgroundPosition: 'right'
         }}>
-         <div className="bg-alert alert-danger shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
+            <div className="bg-alert alert-danger shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
                 <p className="lead">Get All Books</p>
                 <div className="form form-group" >
                     <input
@@ -61,7 +55,7 @@ const ViewBooks = () => {
                                 <table className="table">
                                     <thead>
                                         <tr>
-                                           
+
                                             <th>Books Name</th>
                                         </tr>
                                     </thead>
@@ -78,9 +72,9 @@ const ViewBooks = () => {
                     }
                     </div>
                 </div>
-            </div> 
             </div>
-);
+        </div>
+    );
 }
 
 export default ViewBooks;
